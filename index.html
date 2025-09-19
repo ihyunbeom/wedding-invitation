@@ -11,18 +11,21 @@
       property="og:title"
       content="<%= GROOM_FULLNAME %> ❤️ <%= BRIDE_FULLNAME %> 결혼합니다."
     />
-    <meta property="og:image" content="%BASE_URL%preview_image.png" />
+    
+    <meta property="og:image" content="/preview_image.png" />
     <meta property="og:url" content="%BASE_URL%/" />
     <meta property="og:description" content="<%= DESCRIPTION %>" />
-    <link rel="preload" href="%BASE_URL%MapoGoldenPierA.woff" as="font" crossorigin />
-    <link rel="preload" href="%BASE_URL%AlluraRegular.woff" as="font" crossorigin />
-    <link rel="manifest" href="%BASE_URL%manifest.json" />
-    <link rel="icon" href="%BASE_URL%favicon.ico" />
-    <link rel="stylesheet" href="%BASE_URL%font.css" /
+
+    <link rel="preload" href="/MapoGoldenPierA.woff" as="font" crossorigin />
+    <link rel="preload" href="/AlluraRegular.woff" as="font" crossorigin />
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" href="/favicon.ico" />
+    <link rel="stylesheet" href="/font.css" />
+
     <title><%= GROOM_FULLNAME %> ❤️ <%= BRIDE_FULLNAME %> 결혼합니다.</title>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="%BASE_URL%src/index.tsx"></script>
+    <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>
