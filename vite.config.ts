@@ -23,6 +23,8 @@ try {
   base = pkg.homepage || "/"
 }
 
+if (!base.endsWith("/")) base += "/";
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
@@ -33,7 +35,7 @@ export default defineConfig({
         data: {
           GROOM_FULLNAME,
           BRIDE_FULLNAME,
-          DESCRIPTION: `${WEDDING_DATE.format("M월 D일 A h시")} ${LOCATION}`,
+          DESCRIPTION: `${WEDDING_DATE.format("M월 D일 A h시 m분")} ${LOCATION}`,
         },
       },
     }),
