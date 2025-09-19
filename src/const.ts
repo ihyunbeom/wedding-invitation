@@ -26,8 +26,8 @@ export const KMAP_PLACE_ID = 8634826
 export const BRIDE_FULLNAME = "이아람"
 export const BRIDE_FIRSTNAME = "아람"
 export const BRIDE_TITLE = "장녀"
-export const BRIDE_FATHER = "ㅇㅇㅇ"
-export const BRIDE_MOTHER = "ㅇㅇㅇ"
+export const BRIDE_FATHER = "이동일"
+export const BRIDE_MOTHER = "양미경"
 export const BRIDE_INFO = [
   {
     relation: "신부",
