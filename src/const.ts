@@ -25,7 +25,7 @@ export const KMAP_PLACE_ID = 1212235250
 
 export const BRIDE_FULLNAME = "이아람"
 export const BRIDE_FIRSTNAME = "아람"
-export const BRIDE_TITLE = "장녀"
+export const BRIDE_TITLE = "차녀"
 export const BRIDE_FATHER = "이동일"
 export const BRIDE_MOTHER = "양미경"
 export const BRIDE_INFO = [
@@ -51,7 +51,7 @@ export const BRIDE_INFO = [
 
 export const GROOM_FULLNAME = "이현범"
 export const GROOM_FIRSTNAME = "현범"
-export const GROOM_TITLE = "차남"
+export const GROOM_TITLE = "장남"
 export const GROOM_FATHER = "이계현"
 export const GROOM_MOTHER = "이현숙"
 export const GROOM_INFO = [
