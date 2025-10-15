@@ -115,16 +115,11 @@ export default function App() {
       {/* 7) 신부 부모님 손글씨 */}
       <HandLetter src={parentsBride} alt="parents-bride" rotate={0} />
       
-      <div className="pt-64 bg-white">
       {/* 8) 신랑 손글씨 */}
       <FullImage src={letterGroom} alt="letter-groom" />
-      </div>
-      
-      <div className="pt-64 bg-white">
+                
       {/* 9) 신부 손글씨 */}
-      <FullImage src={letterBride} alt="letter-bride" />
-      </div>
-           
+      <FullImage src={letterBride} alt="letter-bride" />    
 
       {/* (원 페이지 구성에 맞춰 아래 섹션들 이어서) */}
       <Gallery />
@@ -134,6 +129,7 @@ export default function App() {
       </div>
       <Location />
       <Information />
+      <div className="pt-24"></div>
       <ShareButton />
       <div className="pt-64"></div>
       {/* <BGEffect /> */}

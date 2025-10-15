@@ -164,7 +164,7 @@ h2{ font-size: 22px; }
 .fullimg img{ width:100%; height:auto; display:block; }
 .fullimg--fade .fade{
   position:absolute; inset:0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,.88) 100%);
+  background: linear-gradient(to bottom, rgb(255, 255, 255) 45%, rgb(255, 255, 255) 100%);
   pointer-events:none;
 }
 
@@ -172,7 +172,7 @@ h2{ font-size: 22px; }
 .handletter{ padding: 18px 10px; max-width:720px; margin:0 auto; transform-origin:center; }
 .handletter img{
   width:100%; height:auto;
-  filter: drop-shadow(0 2px 0 rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(0,0,0,.35));
+  filter: drop-shadow(0 2px 0 rgb(255, 255, 255)) drop-shadow(0 0 10px rgba(0, 0, 0, 0));
 }
 
 /* 4) ScheduleBanner(배너): 유리 카드 느낌 + 하단 위치 + 그라데이션 */
