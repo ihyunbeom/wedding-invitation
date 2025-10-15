@@ -1,0 +1,130 @@
+/* wedding-peach 스타일 세트 (원본 룩 반영) */
+
+/* 전역 */
+.wp { background: #000; color: #fff; }
+.wp * { box-sizing: border-box; }
+.wp img { display:block; width:100%; height:auto; }
+
+/* 섹션 공통: 풀블리드 */
+.wp .section { margin:0; padding:0; }
+.wp .section-inner { max-width:none; padding:0; }
+
+/* 상단 BGM 버튼 (원본과 동일 배치) */
+.wp .bgmbutton{
+  background: transparent; border:0; cursor:pointer; padding:0;
+  position:absolute; top:0; right:20px; width:40px; height:40px; z-index:9999;
+}
+.wp .bgmbutton img{ width:100%; height:100%; }
+
+/* 이미지 오버레이 텍스트(원본이 많이 쓰는 패턴) */
+.wp .img-overlay{ position:relative; }
+.wp .img-overlay .fade{
+  position:absolute; inset:0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,.85) 100%);
+}
+.wp .img-overlay .overlay-txt{
+  position:absolute; left:50%; bottom:20px; transform:translateX(-50%);
+  width:min(92%,720px); text-align:center; line-height:1.35;
+}
+
+/* 손글씨 이미지 (그림자 강조) */
+.wp .handletter { padding: 18px 10px; }
+.wp .handletter img{
+  filter: drop-shadow(0 2px 0 rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(0,0,0,.35));
+}
+
+/* 일정 카드(이미지 위 안내문구) */
+.wp .sched{ position:relative; }
+.wp .sched img{ width:100%; }
+.wp .sched__card{
+  position:absolute; left:50%; bottom:10%;
+  transform:translateX(-50%);
+  width:min(92%,680px); text-align:center;
+  background: rgba(255,255,255,.92); color:#111;
+  border-radius:16px; padding:14px 16px;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 24px rgba(0,0,0,.18);
+}
+
+/* 길찾기/공유 버튼 룩 */
+.wp .btn-row{ display:flex; gap:8px; padding:12px; }
+.wp .btn-row .btn{
+  flex:1; padding:12px 14px; border-radius:16px;
+  border:1px solid #2a2a2a; background:#111; color:#fff; cursor:pointer;
+}
+
+/* 갤러리 (2열) */
+.wp .gallery{ padding: 20px 12px; }
+.wp .gallery .grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:6px; max-width:720px; margin:0 auto;
+}
+.wp .gallery img{ border-radius:8px; }
+
+/* 라이트박스 */
+.wp dialog.lightbox::backdrop{ background: rgba(0,0,0,.88); }
+.wp dialog.lightbox{ border:0; padding:0; background:transparent; }
+.wp .lightbox__wrap{
+  position:relative; width:min(92vw,920px); margin:0 auto;
+  display:grid; grid-template-columns:auto 1fr auto; gap:12px; align-items:center;
+}
+.wp .lightbox img{ width:100%; max-height:86vh; object-fit:contain; background:#000; }
+.wp .lightbox__btn, .wp .lightbox__close{
+  background:#ffffff1a; color:#fff; border:1px solid #ffffff33; border-radius:10px;
+  padding:8px 12px; cursor:pointer; backdrop-filter: blur(4px);
+}
+.wp .lightbox__close{ position:absolute; right:0; top:-44px; }
+
+/* “고정 배경” 효과 래퍼 (원본의 fixed_bg_wrap 유사) */
+.wp .fixed-bg-wrap{ position:relative; overflow:hidden; }
+.wp .fixed-bg-wrap .fixed-bg{
+  position:fixed; inset:0; width:100%; height:100vh; object-fit:cover; display:block;
+}
+@media (min-width: 992px){
+  .wp .fixed-bg-wrap{ background-attachment:fixed; }
+}
+
+/* 푸터 */
+.wp .footer{ text-align:center; padding: 24px 0 40px; color:#aaa; }
+
+/* 공유바(상단 고정) */
+.wp .sharebar{
+  position:sticky; top:0; z-index:20; display:flex; gap:8px; padding:8px 8px 0;
+  background: rgba(0,0,0,.6); backdrop-filter: blur(6px);
+}
+.wp .sharebar button{
+  flex:1; padding:10px 12px; border-radius:999px;
+  border:1px solid #2a2a2a; background:#111; color:#fff; cursor:pointer;
+}
+
+/* Cover 전용 타이포 튜닝 */
+.wp .cover .overlay-txt .invited{
+  font-size: 12px; letter-spacing: .12em; opacity: .9; color: #cfe4ff;
+}
+.wp .cover .overlay-txt .title{
+  margin: 6px 0 4px;
+  font-size: clamp(32px, 8vw, 56px);
+  font-weight: 700;
+  letter-spacing: .02em;
+  color: #cfe4ff;
+}
+.wp .cover .overlay-txt .meta{
+  font-size: 14px; letter-spacing: .04em; opacity: .95;
+}
+
+/* ScheduleBanner 디테일(원본 톤) */
+.sched.sched--peach {
+  .sched__wrap { position: relative; }
+  .sched__img  { display: block; }
+  .sched__fade {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,.88) 100%);
+    pointer-events: none;
+  }
+  .sched__card {
+    /* 텍스트 톤 */
+    .kicker { font-size: 12px; letter-spacing: .12em; text-transform: uppercase; opacity: .85; }
+    .date   { font-weight: 700; letter-spacing: .04em; }
+    .place  { color: #2c6aa0; font-weight: 700; margin-top: 4px; }
+    small   { color: #666; display: block; margin-top: 4px; }
+  }
+}

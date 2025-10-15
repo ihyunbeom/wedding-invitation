@@ -2,47 +2,31 @@ import {
   BRIDE_FULLNAME,
   GROOM_FULLNAME,
   LOCATION,
+  LOCATION_ADDRESS,
   WEDDING_DATE,
-} from "../../const"
-import { COVER_IMAGE } from "../../images"
-import { LazyDiv } from "../lazyDiv"
-
-const DAY_OF_WEEK = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-]
+} from "../../const";
+import { COVER_IMAGE } from "../../images";
+// LazyDiv을 유지하고 싶다면 사용, 아니라면 <section>으로 바꿔도 됩니다.
+import { LazyDiv } from "../lazyDiv";
 
 export const Cover = () => {
   return (
-    <LazyDiv className="card cover">
-      <div className="wedding-date">
-        {WEDDING_DATE.format("YYYY")}
-        <div className="divider" />
-        {WEDDING_DATE.format("MM")}
-        <div className="divider" />
-        {WEDDING_DATE.format("DD")}
+    <LazyDiv className="section cover">
+      <div className="img-overlay">
+        <img src={COVER_IMAGE} alt="cover" />
+        <div className="fade" />
+        <div className="overlay-txt">
+          <p className="invited">YOU’RE INVITED TO</p>
+          <h1 className="title">
+            {GROOM_FULLNAME} &nbsp; / &nbsp; {BRIDE_FULLNAME}
+          </h1>
+          <p className="meta">
+            {WEDDING_DATE.format("YYYY.MM.D (ddd) A h:mm")}
+          </p>
+          <p className="meta">{LOCATION}</p>
+          <p className="meta">{LOCATION_ADDRESS}</p>
+        </div>
       </div>
-      <div className="wedding-day-of-week">
-        {DAY_OF_WEEK[WEDDING_DATE.day()]}
-      </div>
-      <div className="image-wrapper">
-        <img src={COVER_IMAGE} alt="sample" />
-      </div>
-      <div className="subtitle">Save the date for the wedding of</div>
-      <div className="names">
-        {GROOM_FULLNAME}
-        <div className="divider" />
-        {BRIDE_FULLNAME}
-      </div>
-      <div className="info">
-        {WEDDING_DATE.format("YYYY년 MMMM D일 dddd A h시 m분")}
-      </div>
-      <div className="info">{LOCATION}</div>
     </LazyDiv>
-  )
-}
+  );
+};

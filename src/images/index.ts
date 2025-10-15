@@ -1,30 +1,32 @@
-import coverImage from "./cover.png"
-import image1 from "./image1.png"
-import image2 from "./image2.png"
-import image3 from "./image3.png"
-import image4 from "./image4.png"
-import image5 from "./image5.png"
-import image6 from "./image6.png"
-import image7 from "./image7.png"
-import image8 from "./image8.png"
-import image9 from "./image9.png"
-import image10 from "./image10.png"
-import image11 from "./image11.png"
-import image12 from "./image12.png"
+/* src/images/index.ts
+   - src/images/image1.png ~ image12.png 자동 수집 (누락/순서 꼬임 방지)
+   - 개별 리소스도 함께 export
+*/
 
-export const COVER_IMAGE = coverImage
+export { default as coverTop }        from "./cover-top.png";
+export { default as cover }           from "./cover.png";
+export { default as scheduleBanner }  from "./schedule-banner.png";
+export { default as photo01 }         from "./photo-01.png";
+export { default as photo02 }         from "./photo-02.png";
+export { default as letter00 }        from "./letter-00.png";
+export { default as letterGroom }     from "./letter-groom.png";
+export { default as letterBride }     from "./letter-bride.png";
+export { default as parentsGroom }    from "./parents-groom.png";
+export { default as parentsBride }    from "./parents-bride.png";
 
-export const GALLERY_IMAGES = [
-  image1,
-  image2,
-  image3,
-  image4,
-  image5,
-  image6,
-  image7,
-  image8,
-  image9,
-  image10,
-  image11,
-  image12,
-]
+/* 갤러리 이미지 자동 수집: image1.png ~ image12.png
+   - 파일을 추가/삭제해도 자동 반영
+   - 오름차순 정렬 보장
+*/
+const modules = import.meta.glob("./image*.png", {
+  eager: true,
+  import: "default",
+}) as Record<string, string>;
+
+export const GALLERY_IMAGES: string[] = Object.entries(modules)
+  .sort((a, b) => {
+    const na = Number(a[0].match(/image(\d+)\.png$/)?.[1] ?? 0);
+    const nb = Number(b[0].match(/image(\d+)\.png$/)?.[1] ?? 0);
+    return na - nb;
+  })
+  .map(([, src]) => src);

@@ -1,3 +1,4 @@
+import "./index.scss";
 import { useEffect, useMemo, useState } from "react"
 import {
   BRIDE_FIRSTNAME,
@@ -40,10 +41,10 @@ export const Calendar = () => {
   }, [tsDiff])
 
   return (
-    <LazyDiv className="card calendar">
-      <h2 className="english">The Wedding Day</h2>
+    <LazyDiv className="card calendar bg-sky">
+      <h2 className="english caltext">The Wedding Day</h2>
       <div className="break" />
-      {WEDDING_DATE.format("YYYY년 MMMM D일 dddd A h시 m분")}
+      <div className="caltext">{WEDDING_DATE.format("YYYY년 MMMM D일 dddd A h시 m분")}</div>
       <div className="calendar-wrapper">
         <div className="head holiday">
           <span>Su</span>
@@ -84,6 +85,7 @@ export const Calendar = () => {
 
           if (isWeddingDate) {
             classes.push("wedding-date")
+            classes.push("cell")
           }
 
           return (
@@ -98,7 +100,7 @@ export const Calendar = () => {
         })}
       </div>
       <div className="countdown-wrapper">
-        <div className="countdown">
+        <div className="countdown caltext">
           <div className="unit">DAY</div>
           <div />
           <div className="unit">HOUR</div>
@@ -114,7 +116,7 @@ export const Calendar = () => {
           <span>:</span>
           <div className="count">{diffs.seconds}</div>
         </div>
-        <div className="message">
+        <div className="message caltext">
           {GROOM_FIRSTNAME} & {BRIDE_FIRSTNAME}의 결혼식이{" "}
           {dayDiff > 0 ? (
             <>

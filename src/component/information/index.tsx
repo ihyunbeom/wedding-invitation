@@ -1,172 +1,99 @@
-import { BRIDE_INFO, GROOM_INFO } from "../../const"
-import { STATIC_ONLY } from "../../env"
-import { Button } from "../button"
-import { LazyDiv } from "../lazyDiv"
-import { useModal } from "../modal"
-import { AttendanceInfo } from "./attendance"
+import React from "react";
+import "./index.scss";
 
-export const Information1 = () => {
-  return (
-    <>
-      <h2 className="english">Information</h2>
-      <div className="info-card">
-        <div className="label">식사 안내</div>
-        <div className="content">
-          식사시간: 12시 30분 ~ 14시 30분
-          <br />
-          장소: 13층 피로연장
-        </div>
-      </div>
-    </>
-  )
-}
+// (옵션) 상단 배지 이미지가 있으면 import 해서 넘겨주세요.
+import heartTitle from "../../images/heart-title.png";
 
-export const Information2 = () => {
-  const { openModal, closeModal } = useModal()
+type Account = { bank: string; number: string; name: string };
 
-  return (
-    <>
-      <div className="info-card">
-        <div className="label">마음 전하기</div>
-        <div className="content">
-          참석이 어려워 직접 축하해주지 못하는
-          <br />
-          분들을 위해 계좌번호를 기재하였습니다.
-          <br />
-          넓은 마음으로 양해 부탁드립니다.
-        </div>
+const GROOM_ACCOUNTS: Account[] = [
+  { bank: "국민", number: "00000-00-00000", name: "이현범" },
+  { bank: "국민", number: "00000-00-00000", name: "이계현" },
+  { bank: "국민", number: "00000-00-00000", name: "이현숙" },
+];
 
-        <div className="break" />
+const BRIDE_ACCOUNTS: Account[] = [
+  { bank: "국민", number: "00000-00-00000", name: "이아람" },
+  { bank: "국민", number: "00000-00-00000", name: "이동일" },
+  { bank: "국민", number: "00000-00-00000", name: "양미경" },
+];
 
-        <Button
-          style={{ width: "100%" }}
-          onClick={() => {
-            openModal({
-              className: "donation-modal",
-              closeOnClickBackground: true,
-              header: <div className="title">신랑측 계좌번호</div>,
-              content: (
-                <>
-                  {GROOM_INFO.filter(({ account }) => !!account).map(
-                    ({ relation, name, account }) => (
-                      <div className="account-info" key={relation}>
-                        <div>
-                          <div className="name">
-                            <span className="relation">{relation}</span> {name}
-                          </div>
-                          <div>{account}</div>
-                        </div>
-                        <Button
-                          className="copy-button"
-                          onClick={async () => {
-                            if (account) {
-                              try {
-                                navigator.clipboard.writeText(account)
-                                alert(account + "\n복사되었습니다.")
-                              } catch {
-                                alert("복사에 실패했습니다.")
-                              }
-                            }
-                          }}
-                        >
-                          복사하기
-                        </Button>
-                      </div>
-                    ),
-                  )}
-                </>
-              ),
-              footer: (
-                <Button
-                  buttonStyle="style2"
-                  className="bg-light-grey-color text-dark-color"
-                  onClick={closeModal}
-                >
-                  닫기
-                </Button>
-              ),
-            })
-          }}
-        >
-          신랑측 계좌번호 보기
-        </Button>
-        <div className="break" />
-        <Button
-          style={{ width: "100%" }}
-          onClick={() => {
-            openModal({
-              className: "donation-modal",
-              closeOnClickBackground: true,
-              header: <div className="title">신부측 계좌번호</div>,
-              content: (
-                <>
-                  {BRIDE_INFO.filter(({ account }) => !!account).map(
-                    ({ relation, name, account }) => (
-                      <div className="account-info" key={relation}>
-                        <div>
-                          <div className="name">
-                            <span className="relation">{relation}</span> {name}
-                          </div>
-                          <div>{account}</div>
-                        </div>
-                        <Button
-                          className="copy-button"
-                          onClick={async () => {
-                            if (account) {
-                              try {
-                                navigator.clipboard.writeText(account)
-                                alert(account + "\n복사되었습니다.")
-                              } catch {
-                                alert("복사에 실패했습니다.")
-                              }
-                            }
-                          }}
-                        >
-                          복사하기
-                        </Button>
-                      </div>
-                    ),
-                  )}
-                </>
-              ),
-              footer: (
-                <Button
-                  buttonStyle="style2"
-                  className="bg-light-grey-color text-dark-color"
-                  onClick={closeModal}
-                >
-                  닫기
-                </Button>
-              ),
-            })
-          }}
-        >
-          신부측 계좌번호 보기
-        </Button>
-      </div>
-    </>
-  )
-}
-
-export const Information = () => {
-  if (STATIC_ONLY) {
-    return (
-      <>
-        <LazyDiv className="card information">
-          <Information1 />
-        </LazyDiv>
-        <LazyDiv className="card information">
-          <Information2 />
-        </LazyDiv>
-      </>
-    )
+async function copy(text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+    alert("계좌번호가 복사되었습니다.");
+  } catch {
+    // http 환경 등 clipboard API 미지원 대비
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
+    alert("계좌번호가 복사되었습니다.");
   }
+}
 
+function AccountList({
+  title,
+  items,
+}: {
+  title: string;
+  items: Account[];
+}) {
   return (
-    <LazyDiv className="card information">
-      <Information1 />
-      <Information2 />
-      <AttendanceInfo />
-    </LazyDiv>
-  )
+    <div className="info__group">
+      <div className="info__group-title">{title}</div>
+      <hr className="info__divider" />
+      <ul className="info__list">
+        {items.map((it, idx) => (
+          <li key={idx} className="info__item">
+            <div className="info__text">
+              <div className="info__bankno">
+                {it.bank} {it.number}
+              </div>
+              <div className="info__name">{it.name}</div>
+            </div>
+            <button
+              type="button"
+              className="info__copy"
+              onClick={() => copy(`${it.bank} ${it.number}`)}
+            >
+              복사하기
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function Information({
+  titleImg, // 상단 배지 이미지를 넘기고 싶다면 prop으로
+}: {
+  titleImg?: string;
+}) {
+  return (
+    <section className="information card">
+      {/* 상단 배지 */}
+      <div className="info__title-wrap">        
+          <img className="info__title-img" src={heartTitle} alt="마음 전하실 곳" />  
+      </div>
+
+      {/* 신랑측 */}
+      <AccountList title="🤵 신랑측 계좌번호" items={GROOM_ACCOUNTS} />
+
+      {/* 구분선 */}
+      <div className="info__section-sep" />
+
+      {/* 신부측 */}
+      <AccountList title="👰 신부측 계좌번호" items={BRIDE_ACCOUNTS} />
+
+      {/* 하단 안내 */}
+      {/* <div className="info__note">
+        <span className="info__flower" aria-hidden>🌸</span>
+        화환은 정중히 사양합니다
+      </div> */}
+    </section>
+  );
 }

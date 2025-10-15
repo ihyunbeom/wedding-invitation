@@ -1,190 +1,64 @@
-.information {
-  .info-card {
-    margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
-    padding: 2rem 1rem 1rem 1rem;
-
-    position: relative;
-    border: 1px solid var(--alt-color);
-    border-radius: 0.5rem;
-    .label {
-      position: absolute;
-      left: 50%;
-      top: -1rem;
-      transform: translateX(-50%);
-      padding: 0.5rem 2rem 0.5rem 2rem;
-      border-radius: 1rem;
-      background-color: var(--alt-bg-color);
-      border: 1px solid var(--alt-color);
-    }
-  }
-  .content {
-    line-height: 1.9;
-    font-size: 0.9rem;
-  }
+.information.card{
+  background: #cfe3f2;               /* 밝은 하늘색 배경 */
+  border: 1px solid #b9cbe0;
+  padding: 16px 14px 50px;
+  color: #111;
 }
 
-.donation-modal {
-  width: 22rem;
+/* 타이틀 배지 */
+.info__title-wrap{ display:grid; place-items:center; margin: 4px 0 12px; }
 
-  .header {
-    .title {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--theme-color);
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--dark-grey-color);
-    }
-  }
-  .content {
-    padding: 0 0.7rem 0.7rem 0.7rem;
-
-    .account-info {
-      margin-top: 1rem;
-      margin-bottom: 1rem;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      .name {
-        margin-bottom: 0.3rem;
-        .relation {
-          opacity: 0.7;
-        }
-      }
-      .copy-button {
-        font-size: 0.8rem;
-        padding: 0.4rem 0.8rem;
-      }
-    }
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: column;
-  }
+.info__title-img {
+  width: 140px !important;   /* ← 원하는 가로폭 */
+  height: auto !important;   /* 비율 유지 */
+  max-width: none !important;/* 전역 max-width:100% 무력화 */
+  display: block;
+  margin-bottom: 28px;
+  margin-top: 14px;
 }
 
-.attendance-modal {
-  width: 22rem;
-
-  .header {
-    .title {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--theme-color);
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--dark-grey-color);
-    }
-  }
-
-  .content {
-    padding: 0 1rem 1rem 1rem;
-
-    .form {
-      display: flex;
-      flex-direction: column;
-      margin-top: 1rem;
-      gap: 1.5rem;
-
-      .input-group {
-        display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
-
-        .input {
-          display: flex;
-          flex-direction: column;
-        }
-        .select-input {
-          display: flex;
-          flex-direction: row;
-
-          label {
-            width: 100%;
-            span {
-              padding: 0.4rem;
-              display: inline-block;
-              text-align: center;
-              width: 100%;
-              background-color: var(--light-grey-color);
-            }
-            input {
-              &:checked + span {
-                border: 2px solid var(--alt-color);
-              }
-              & + span {
-                border: 2px solid var(--light-grey-color);
-              }
-            }
-          }
-        }
-
-        .radio-input {
-          display: flex;
-          flex-direction: row;
-          justify-content: left;
-          gap: 2rem;
-        }
-
-        input {
-          padding: 0.5rem;
-          margin-bottom: 0.5rem;
-          border: 1px solid var(--light-grey-color);
-          border-radius: 0.3rem;
-          font-family: "MapoGoldenPier";
-          font-size: 0.8rem;
-        }
-      }
-    }
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: row;
-    button {
-      width: 100%;
-    }
-  }
+.info__title-fallback{
+  display:inline-block; padding:8px 18px; border:1px dashed #8fb7e0;
+  border-radius: 999px; color:#2a4d72; font-weight:700; font-size:14px;
+  background:#e8f2ff;
 }
 
-.attendance-info-modal {
-  width: 22rem;
-
-  .header {
-    .title {
-      text-align: center;
-      font-size: 1.2rem;
-      color: var(--theme-color);
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--dark-grey-color);
-    }
-  }
-
-  .content {
-    padding: 1.5rem 1rem 1.5rem 1rem;
-    .info-message {
-      text-align: center;
-      line-height: 1.5rem;
-      padding-bottom: 1.5rem;
-      border-bottom: 1px dotted var(--dark-grey-color);
-    }
-    .wedding-info {
-      padding-top: 1.5rem;
-      padding-left: 2rem;
-      line-height: 1.5rem;
-      svg {
-        width: 0.8rem;
-        height: 0.8rem;
-      }
-    }
-  }
-
-  .footer {
-    display: flex;
-    flex-direction: row;
-    button {
-      width: 100%;
-    }
-  }
+/* 그룹 타이틀 + 목록 */
+.info__group{ margin-top: 6px; }
+.info__group-title{
+  font-weight: 800; font-size: 0.98rem; color:#1b2d46; display:flex; gap:.4rem; align-items:center;
 }
+.info__divider{ border:0; border-top:1px solid #334a63; opacity:.45; margin: 8px 0 10px; }
+
+.info__list{ list-style:none; padding:0; margin:0; display:grid; gap:10px; }
+.info__item{
+  display:grid; grid-template-columns: 1fr auto; align-items:center; gap: 10px;
+}
+.info__text{ line-height:1.35; }
+.info__bankno{ font-weight:700; }
+.info__name{ color:#333; opacity:.8; }
+
+.info__copy{
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 0;
+  background: #111; color:#fff;
+  font-weight: 700; font-size: .88rem;
+  cursor: pointer;
+  box-shadow: 0 2px 0 rgba(0,0,0,.25);
+}
+
+/* 섹션 사이 구분 영역 */
+.info__section-sep{
+  height: 14px;
+  border-bottom: 1px solid #334a63;
+  opacity:.25;
+  margin: 8px 0 4px;
+}
+
+/* 하단 안내문 */
+.info__note{
+  display:flex; align-items:center; justify-content:center;
+  gap:8px; margin-top: 14px; color:#475b75; font-weight:600;
+}
+.info__flower{ font-size: 18px; }

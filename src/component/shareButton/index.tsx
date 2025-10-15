@@ -1,79 +1,26 @@
-import {
-  BRIDE_FULLNAME,
-  GROOM_FULLNAME,
-  LOCATION,
-  SHARE_ADDRESS,
-  SHARE_ADDRESS_TITLE,
-  WEDDING_DATE,
-} from "../../const"
-import ktalkIcon from "../../icons/ktalk-icon.png"
-import { LazyDiv } from "../lazyDiv"
-import { useKakao } from "../store"
+import { useEffect } from "react";
+import { ENV } from "../../env";
+import { copyText, initKakao, shareKakao, shareNative } from "../common/utils";
 
-const baseUrl = import.meta.env.BASE_URL
+export function ShareButton() {
+  useEffect(() => { initKakao(ENV.KAKAO_KEY); }, []);
+  const url = ENV.SITE_URL || window.location.href;
 
-export const ShareButton = () => {
-  const kakao = useKakao()
+  const onCopy = () => copyText(url);
+  const onShareKakao = () =>
+    shareKakao({
+      title: "초대합니다",
+      description: "우리의 결혼식에 초대합니다",
+      imageUrl: "/preview_image.png",
+      url,
+    });
+  const onShareNative = () => shareNative({ title: "초대장", text: "초대합니다", url });
+
   return (
-    <LazyDiv className="footer share-button">
-      <button
-        className="ktalk-share"
-        onClick={() => {
-          if (!kakao) {
-            return
-          }
-
-          kakao.Share.sendDefault({
-            objectType: "location",
-            address: SHARE_ADDRESS,
-            addressTitle: SHARE_ADDRESS_TITLE,
-            content: {
-              title: `${GROOM_FULLNAME} ❤️ ${BRIDE_FULLNAME}의 결혼식에 초대합니다.`,
-              description:
-                WEDDING_DATE.format("YYYY년 MMMM D일 dddd A h시") +
-                "\n" +
-                LOCATION,
-              imageUrl:
-                window.location.protocol +
-                "//" +
-                window.location.host +
-                baseUrl +
-                "/preview_image.png",
-              link: {
-                mobileWebUrl:
-                  window.location.protocol +
-                  "//" +
-                  window.location.host +
-                  baseUrl,
-                webUrl:
-                  window.location.protocol +
-                  "//" +
-                  window.location.host +
-                  baseUrl,
-              },
-            },
-            buttons: [
-              {
-                title: "초대장 보기",
-                link: {
-                  mobileWebUrl:
-                    window.location.protocol +
-                    "//" +
-                    window.location.host +
-                    baseUrl,
-                  webUrl:
-                    window.location.protocol +
-                    "//" +
-                    window.location.host +
-                    baseUrl,
-                },
-              },
-            ],
-          })
-        }}
-      >
-        <img src={ktalkIcon} alt="ktalk-icon" /> 카카오톡으로 공유하기
-      </button>
-    </LazyDiv>
-  )
+    <div className="sharebar">
+      <button onClick={onShareKakao}>카카오톡 공유</button>
+      <button onClick={onShareNative}>공유</button>
+      <button onClick={onCopy}>주소 복사</button>
+    </div>
+  );
 }

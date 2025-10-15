@@ -1,31 +1,74 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
-    <meta property="og:type" content="website" />
-    <meta
-      property="og:title"
-      content="<%= GROOM_FULLNAME %> ❤️ <%= BRIDE_FULLNAME %> 결혼합니다."
-    />
-    
-    <meta property="og:image" content="/preview_image.png" />
-    <meta property="og:url" content="%BASE_URL%/" />
-    <meta property="og:description" content="<%= DESCRIPTION %>" />
+    <meta name="format-detection" content="telephone=no, address=no, email=no" />
+    <meta name="theme-color" content="#ffffff" />
 
-    <link rel="preload" href="/MapoGoldenPierA.woff" as="font" crossorigin />
-    <link rel="preload" href="/AlluraRegular.woff" as="font" crossorigin />
-    <link rel="manifest" href="/manifest.json" />
-    <link rel="icon" href="/favicon.ico" />
+    <title>아람 & 현범 결혼합니다</title>
+    <meta
+      name="description"
+      content="2026.01.03 (토) 낮 12:30 | OO 웨딩홀. 우리의 결혼식에 초대합니다."
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="아람 & 현범 결혼합니다" />
+    <meta
+      property="og:description"
+      content="2026.01.03 (토) 낮 12:30 | OO 웨딩홀"
+    />
+    <meta property="og:image" content="/preview_image.png" />
+    <!-- 배포 후 실제 주소로 교체 권장 -->
+    <meta property="og:url" content="https://<username>.github.io/<repo>/" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="아람 & 현범 결혼합니다" />
+    <meta
+      name="twitter:description"
+      content="2026.01.03 (토) 낮 12:30 | OO 웨딩홀"
+    />
+    <meta name="twitter:image" content="/preview_image.png" />
+
+    <!-- Icons -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" />
+    <link rel="icon" href="/favicon-192.png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Fonts (선택) -->
+    <!-- preload 쓸 때는 반드시 as="font"와 crossorigin을 지정해야 경고가 사라집니다 -->
+    <link
+      rel="preload"
+      href="/AlluraRegular.woff"
+      as="font"
+      type="font/woff"
+      crossorigin
+    />
     <link rel="stylesheet" href="/font.css" />
 
-    <title><%= GROOM_FULLNAME %> ❤️ <%= BRIDE_FULLNAME %> 결혼합니다.</title>
+    <!-- (선택) PWA manifest -->
+    <!-- <link rel="manifest" href="/manifest.json" /> -->
+
+    <!-- Kakao SDK: 카카오톡 공유 사용 시 필요 -->
+    <script
+      src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div id="root"></div>
+
+    <noscript>
+      이 사이트를 보려면 자바스크립트를 활성화해주세요.
+    </noscript>
+
+    <!-- Vite entry: 절대 경로(/) 유지 → dev에서는 '/', build 시 자동으로 base가 붙습니다 -->
     <script type="module" src="/src/index.tsx"></script>
   </body>
 </html>

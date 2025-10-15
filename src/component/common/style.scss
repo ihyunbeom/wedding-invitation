@@ -1,0 +1,21 @@
+// /* FullImage */
+// .fullimg { position: relative; }
+// .fullimg img { width:100%; display:block; }
+// .fullimg--fade .fade {
+//   position:absolute; inset:0;
+//   background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,.75) 100%);
+// }
+
+// /* HandLetter */
+// .handletter { padding: 18px 10px; max-width: 720px; margin: 0 auto; }
+// .handletter img { width:100%; display:block; filter: drop-shadow(0 2px 0 rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(0,0,0,.35)); }
+
+// /* ScheduleBanner */
+// .sched { position:relative; }
+// .sched__img { width:100%; display:block; }
+// .sched__card {
+//   position:absolute; left:50%; bottom:10%; transform:translateX(-50%);
+//   width:min(92%, 680px); padding:14px 16px; border-radius:16px;
+//   background:rgba(255,255,255,.9); color:#1b1b1b; text-align:center;
+//   backdrop-filter: blur(6px);
+// }
