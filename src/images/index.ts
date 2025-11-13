@@ -4,7 +4,6 @@
 */
 
 export { default as coverTop }        from "./cover-top.png";
-export { default as cover }           from "./cover.png";
 export { default as scheduleBanner }  from "./schedule-banner.png";
 export { default as photo01 }         from "./photo-01.png";
 export { default as photo02 }         from "./photo-02.png";
