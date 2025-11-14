@@ -1,9 +1,11 @@
 // src/App.tsx
+import React, { useEffect, useRef, useState } from "react";
 import "./App.scss";
 
 import FullImage from "./component/common/FullImage";
 import HandLetter from "./component/common/HandLetter";
 import ScheduleBanner from "./component/common/ScheduleBanner";
+
 import {
   coverTop,
   scheduleBanner,
@@ -16,26 +18,79 @@ import {
   letterBride,
 } from "./images";
 
-// 기존 섹션 컴포넌트들
 import { Calendar } from "./component/calendar";
 import { Location } from "./component/location";
 import Information from "./component/information";
 import { Gallery } from "./component/gallery";
 import { ShareButton } from "./component/shareButton";
-// 필요 시 사용:
-// import { BGEffect } from "./component/bgEffect";
-// import { STATIC_ONLY } from "./env";
-// import { GuestBook } from "./component/guestbook";
+
+// mp3 위치에 맞게 수정
+import bgmSrc from "./component/music/wedding_bgm.mp3";
 
 export default function App() {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  // 오디오 준비 + 최초 자동 재생 시도
+  useEffect(() => {
+    const audio = new Audio(bgmSrc);
+    audio.loop = true;
+    audio.volume = 0.6;
+    audioRef.current = audio;
+
+    const tryAutoPlay = async () => {
+      try {
+        await audio.play();        // 일부 브라우저/카카오에서는 막힐 수 있음
+        setIsPlaying(true);
+      } catch (err) {
+        console.log("자동재생이 차단되어 수동 재생만 가능합니다.", err);
+        setIsPlaying(false);
+      }
+    };
+
+    tryAutoPlay();
+
+    return () => {
+      audio.pause();
+      audioRef.current = null;
+    };
+  }, []);
+
+  const toggleBgm = async () => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    if (isPlaying) {
+      audio.pause();
+      setIsPlaying(false);
+    } else {
+      try {
+        await audio.play();
+        setIsPlaying(true);
+      } catch (err) {
+        console.error("BGM 재생 실패:", err);
+      }
+    }
+  };
+
   return (
     <div className="wp">
-      {/* 1) 최상단 커버 이미지 */}
+      {/* 🎵 BGM 토글 버튼 (커버 사진 위, 우측 상단) */}
+      <button
+        type="button"
+        className={`bgm-toggle ${isPlaying ? "on" : "off"}`}
+        onClick={toggleBgm}
+      >
+        <span className="bgm-icon">♪</span>
+        <span className="bgm-text">{isPlaying ? "ON" : "OFF"}</span>
+      </button>
+
+      {/* 1) 커버 이미지 */}
       <FullImage src={coverTop} alt="cover" fade />
 
-      <div className="pt-64"></div>
+      <div className="pt-64" />
 
-      {/* 2) 일정/장소 안내 배너 */}
+      {/* 2) 일정/장소 배너 */}
       <ScheduleBanner
         showImage={false}
         badgeSrc={scheduleBanner}
@@ -45,38 +100,21 @@ export default function App() {
         venueAddress="서울시 구로구 경인로 624"
       />
 
-      <div className="pt-64"></div>
+      <div className="pt-64" />
 
-      {/* 3) 큰 사진 1 */}
+      {/* 이하 기존 구성 그대로 */}
       <HandLetter src={photo01} alt="photo-01" />
-
-      <div className="pt-64"></div>
-
-      {/* 4) 인트로 손글씨 */}
+      <div className="pt-64" />
       <HandLetter src={letter00} alt="letter-00" rotate={0} />
-
-      <div className="pt-64"></div>
-
-      {/* 5) 큰 사진 2 */}
+      <div className="pt-64" />
       <FullImage src={photo02} alt="photo-02" />
-
-      <div className="pt-64"></div>
-
-      {/* 6) 신랑 부모님 손글씨 */}
+      <div className="pt-64" />
       <HandLetter src={parentsGroom} alt="parents-groom" rotate={0} />
-
-      <div className="pt-64"></div>
-
-      {/* 7) 신부 부모님 손글씨 */}
+      <div className="pt-64" />
       <HandLetter src={parentsBride} alt="parents-bride" rotate={0} />
-
-      {/* 8) 신랑 손글씨 */}
       <FullImage src={letterGroom} alt="letter-groom" />
-
-      {/* 9) 신부 손글씨 */}
       <FullImage src={letterBride} alt="letter-bride" />
 
-      {/* 10) 갤러리, 캘린더, 오시는 길, 안내 */}
       <Gallery />
 
       <div className="pt-64 bg-sky">
@@ -86,16 +124,9 @@ export default function App() {
       <Location />
       <Information />
 
-      <div className="pt-24"></div>
-
-      {/* ✅ ShareButton은 항상 노출 (숨김 처리 X) */}
+      <div className="pt-24" />
       <ShareButton />
-
-      <div className="pt-64"></div>
-
-      {/* 필요 시 모션 배경 효과 / 방명록 섹션 */}
-      {/* <BGEffect /> */}
-      {/* {!STATIC_ONLY && <GuestBook />} */}
+      <div className="pt-64" />
     </div>
   );
 }

@@ -167,7 +167,11 @@ h2{ font-size: 22px; }
 /* ======= WEDDING-PEACH VIEW MATCH TWEAKS ======= */
 
 /* 1) 전역 톤: 다크 배경 + 흰 텍스트 (카피 사이트 분위기) */
-.wp { background:#000; color:#fff; }
+.wp {
+  position: relative;  // ✅ BGM 버튼이 이 안에서 absolute로 위치 잡도록
+  background: #000;
+  color: #fff;
+}
 .wp img { display:block; max-width:100%; height:auto; }
 
 /* 2) FullImage: 전폭 + 페이드 오버레이 */
@@ -369,3 +373,59 @@ $rounds: 6, 8, 10, 12, 16, 20, 24, 9999;
   color: #fff !important;
 }
 
+/* 🎵 배경음악 토글 버튼 */
+.bgm-toggle {
+  position: absolute;
+  top: 18px;
+  right: 9px;
+  z-index: 20;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(168, 168, 168, 0.1);
+
+  background: rgba(0, 0, 0, 0.1); /* 항상 살짝 어두운 배경 */
+  backdrop-filter: blur(10px);
+
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 500;
+  color: #838383;
+
+  cursor: pointer;
+  outline: none;
+
+  opacity: 0.9;
+}
+
+.bgm-toggle .bgm-icon {
+  font-size: 13px;
+  transform: translateY(-0.5px);
+}
+
+.bgm-toggle .bgm-text {
+  letter-spacing: 0.04em;
+}
+
+/* 켜졌을 때: 연보라 그라데이션 + 더 선명하게 */
+// .bgm-toggle.on {
+//   background: rgba(0, 0, 0, 0.1); /* 항상 살짝 어두운 배경 */
+//   border-color: rgba(0, 0, 0, 0.1);
+//   color: #ffffff;
+// }
+.bgm-toggle.on {
+  color: #ffffff;
+}
+
+// .bgm-toggle.off {
+//   opacity: 0.9;
+// }
+
+.bgm-toggle:active {
+  transform: translateY(1px);
+  opacity: 0.9;
+}
