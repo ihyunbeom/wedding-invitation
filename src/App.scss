@@ -239,7 +239,7 @@ h2{ font-size: 22px; }
 }
 
 /* ===== Spacing utilities (padding) ===== */
-$spaces: 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64;
+$spaces: 0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 84, 100, 128;
 
 @each $s in $spaces {
   .pt-#{$s} { padding-top: #{$s}px; }

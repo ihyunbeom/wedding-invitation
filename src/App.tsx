@@ -88,7 +88,7 @@ export default function App() {
       {/* 1) 커버 이미지 */}
       <FullImage src={coverTop} alt="cover" fade />
 
-      <div className="pt-64" />
+      <div className="pt-128" />
 
       {/* 2) 일정/장소 배너 */}
       <ScheduleBanner
@@ -100,24 +100,25 @@ export default function App() {
         venueAddress="서울시 구로구 경인로 624"
       />
 
-      <div className="pt-64" />
+      <div className="pt-128" />
 
       {/* 이하 기존 구성 그대로 */}
       <HandLetter src={photo01} alt="photo-01" />
-      <div className="pt-64" />
+      <div className="pt-128" />
       <HandLetter src={letter00} alt="letter-00" rotate={0} />
-      <div className="pt-64" />
+      <div className="pt-128" />
       <FullImage src={photo02} alt="photo-02" />
-      <div className="pt-64" />
+      <div className="pt-128" />
       <HandLetter src={parentsGroom} alt="parents-groom" rotate={0} />
-      <div className="pt-64" />
+      <div className="pt-128" />
       <HandLetter src={parentsBride} alt="parents-bride" rotate={0} />
+      <div className="pt-128" />
       <FullImage src={letterGroom} alt="letter-groom" />
       <FullImage src={letterBride} alt="letter-bride" />
 
       <Gallery />
 
-      <div className="pt-64 bg-sky">
+      <div className="pt-128 bg-sky">
         <Calendar />
       </div>
 
