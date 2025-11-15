@@ -21,6 +21,25 @@ export function Gallery() {
     setOpenIndex(null);
   };
 
+  const showPrev = (e?: React.MouseEvent) => {
+    // 바깥 클릭으로 전달되지 않도록
+    e?.stopPropagation();
+    setOpenIndex((prev) => {
+      if (prev === null) return 0;
+      const len = images.length;
+      return (prev - 1 + len) % len; // 순환
+    });
+  };
+
+  const showNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    setOpenIndex((prev) => {
+      if (prev === null) return 0;
+      const len = images.length;
+      return (prev + 1) % len; // 순환
+    });
+  };
+
   return (
     <section className="gallery">
       <div className="grid grid--3">
@@ -43,10 +62,18 @@ export function Gallery() {
         ref={dialogRef}
         onClose={close}
         // 배경(바깥) 클릭 시 닫기
-        onClick={(e) => { if (e.target === dialogRef.current) close(); }}
+        onClick={(e) => {
+          if (e.target === dialogRef.current) close();
+        }}
+        // 키보드 ← → 로도 이동 가능하게 (옵션)
+        onKeyDown={(e) => {
+          if (e.key === "ArrowLeft") showPrev();
+          if (e.key === "ArrowRight") showNext();
+          if (e.key === "Escape") close();
+        }}
       >
         <div className="lightbox__wrap">
-          {/* ✅ 항상 보이는 닫기 버튼 (우상단) */}
+          {/* 닫기 버튼 */}
           <button
             className="lightbox__close"
             type="button"
@@ -56,9 +83,34 @@ export function Gallery() {
             ✕
           </button>
 
+          {/* 좌우 이동 버튼 */}
+          {openIndex !== null && (
+            <>
+              <button
+                type="button"
+                className="lightbox__nav lightbox__nav--prev"
+                aria-label="이전 사진"
+                onClick={showPrev}
+              >
+                ‹
+              </button>
+              <button
+                type="button"
+                className="lightbox__nav lightbox__nav--next"
+                aria-label="다음 사진"
+                onClick={showNext}
+              >
+                ›
+              </button>
+            </>
+          )}
+
           {/* 큰 이미지 */}
           {openIndex !== null && (
-            <img src={images[openIndex]} alt={`g${openIndex + 1} 확대`} />
+            <img
+              src={images[openIndex]}
+              alt={`g${openIndex + 1} 확대`}
+            />
           )}
         </div>
       </dialog>

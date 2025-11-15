@@ -83,3 +83,38 @@
 .lightbox img {
   border-radius: 0 !important;
 }
+
+.lightbox__wrap {
+  position: relative;
+}
+
+/* 좌우 네비 버튼 공통 */
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* 왼쪽 / 오른쪽 위치 */
+.lightbox__nav--prev {
+  left: 8px;
+}
+
+.lightbox__nav--next {
+  right: 8px;
+}
