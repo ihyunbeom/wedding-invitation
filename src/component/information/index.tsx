@@ -8,8 +8,8 @@ type Account = { bank: string; number: string; name: string };
 
 const GROOM_ACCOUNTS: Account[] = [
   { bank: "기업", number: "082-112875-01-011", name: "이현범" },
-  { bank: "국민", number: "00000-00-00000", name: "이계현" },
-  { bank: "국민", number: "00000-00-00000", name: "이현숙" },
+  { bank: "국민", number: "094701-04-275549", name: "이계현" },
+  { bank: "농협", number: "100028-56-057787", name: "이현숙" },
 ];
 
 const BRIDE_ACCOUNTS: Account[] = [
