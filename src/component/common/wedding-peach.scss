@@ -28,9 +28,9 @@
 }
 
 /* 손글씨 이미지 (그림자 강조) */
-.wp .handletter { padding: 1px; }
+.wp .handletter { padding: 0px; }
 .wp .handletter img{
-  filter: drop-shadow(0 2px 0 rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(0,0,0,.35));
+  filter: drop-shadow(0 0px 0 rgba(0, 0, 0, 0)) drop-shadow(0 0 0px rgba(0, 0, 0, 0));
 }
 
 /* 일정 카드(이미지 위 안내문구) */
@@ -127,4 +127,26 @@
     .place  { color: #2c6aa0; font-weight: 700; margin-top: 4px; }
     small   { color: #666; display: block; margin-top: 4px; }
   }
+}
+
+/* 풀스크린 이미지 공통 스타일 */
+.fullimg {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+
+  line-height: 0;       // 섹션 자체의 줄 간격 제거
+}
+
+/* 두 이미지를 완전히 맞붙게 */
+.fullimg img {
+  display: block;       // inline일 때 생기는 아래쪽 공백 제거
+  width: 100%;
+  height: auto;
+
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
 }

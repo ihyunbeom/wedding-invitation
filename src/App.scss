@@ -276,7 +276,7 @@ $colors: (
   "gray-700": #2a2a2a,
   "gray-500": #666666,
   "blue": #8fb7e0,
-  "sky":  #cfe4ff,
+  "sky":  #c2e9ff,
   "pink": #ed7a8c,
 );
 
@@ -428,4 +428,13 @@ $rounds: 6, 8, 10, 12, 16, 20, 24, 9999;
 .bgm-toggle:active {
   transform: translateY(1px);
   opacity: 0.9;
+}
+
+.full-image,
+.full-image img {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
 }

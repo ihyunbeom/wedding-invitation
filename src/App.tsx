@@ -91,28 +91,26 @@ export default function App() {
       <div className="pt-128" />
 
       {/* 2) 일정/장소 배너 */}
-      <ScheduleBanner
+      {/* <ScheduleBanner
         showImage={false}
         badgeSrc={scheduleBanner}
         badgeHeight={64}
         dateText="2026.1.11 (일) 오후 12시 40분"
         venueName="라마다 서울 신도림 호텔 하늘정원홀 14층"
         venueAddress="서울시 구로구 경인로 624"
-      />
+      /> */}
+      <FullImage src={scheduleBanner} alt="scheduleBanner" fade />
 
       <div className="pt-128" />
 
       {/* 이하 기존 구성 그대로 */}
       <HandLetter src={photo01} alt="photo-01" />
-      <div className="pt-128" />
+      <div className="pt-64" />
       <HandLetter src={letter00} alt="letter-00" rotate={0} />
-      <div className="pt-128" />
       <FullImage src={photo02} alt="photo-02" />
       <div className="pt-128" />
       <HandLetter src={parentsGroom} alt="parents-groom" rotate={0} />
-      <div className="pt-128" />
-      <HandLetter src={parentsBride} alt="parents-bride" rotate={0} />
-      <div className="pt-128" />
+      {/* <HandLetter src={parentsBride} alt="parents-bride" rotate={0} /> */}
       <FullImage src={letterGroom} alt="letter-groom" />
       <FullImage src={letterBride} alt="letter-bride" />
 
