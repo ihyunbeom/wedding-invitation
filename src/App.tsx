@@ -108,7 +108,6 @@ export default function App() {
       <div className="pt-64" />
       <HandLetter src={letter00} alt="letter-00" rotate={0} />
       <FullImage src={photo02} alt="photo-02" />
-      <div className="pt-128" />
       <HandLetter src={parentsGroom} alt="parents-groom" rotate={0} />
       {/* <HandLetter src={parentsBride} alt="parents-bride" rotate={0} /> */}
       <FullImage src={letterGroom} alt="letter-groom" />

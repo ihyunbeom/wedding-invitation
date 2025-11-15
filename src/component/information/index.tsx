@@ -7,15 +7,15 @@ import heartTitle from "../../images/heart-title.png";
 type Account = { bank: string; number: string; name: string };
 
 const GROOM_ACCOUNTS: Account[] = [
-  { bank: "국민", number: "00000-00-00000", name: "이현범" },
+  { bank: "기업", number: "082-112875-01-011", name: "이현범" },
   { bank: "국민", number: "00000-00-00000", name: "이계현" },
   { bank: "국민", number: "00000-00-00000", name: "이현숙" },
 ];
 
 const BRIDE_ACCOUNTS: Account[] = [
-  { bank: "국민", number: "00000-00-00000", name: "이아람" },
-  { bank: "국민", number: "00000-00-00000", name: "이동일" },
-  { bank: "국민", number: "00000-00-00000", name: "양미경" },
+  { bank: "우리", number: "1002-961-272516", name: "이아람" },
+  { bank: "새마을금고", number: "9002-1792-2255-0", name: "이동일" },
+  { bank: "국민", number: "167-21-0149-184", name: "양미경" },
 ];
 
 async function copy(text: string) {
