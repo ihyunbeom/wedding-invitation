@@ -23,7 +23,7 @@ export function ShareButton() {
 
   return (
     <div className="sharebar">
-      <button onClick={onShareKakao}>카카오톡 공유</button>
+      <button onClick={onShareKakao}>카카오톡 공유하기</button>
       {/* <button onClick={onShareNative}>공유</button>
       <button onClick={onCopy}>주소 복사</button> */}
     </div>
